@@ -110,8 +110,43 @@ export class User {
         this.spaceId = spaceId;
         this.spaceWidth = space.width;
         this.spaceHeight = space.height;
-        this.x = Math.floor(Math.random() * Math.max(1, space.width - 1));
-        this.y = Math.floor(Math.random() * space.height);
+        const roomUsers = RoomManager.getInstance().rooms.get(spaceId) ?? [];
+        const occupiedPositions = new Set(roomUsers.map(user => `${user.x}:${user.y}`));
+        const nearbyPositions: Array<{ x: number; y: number }> = [];
+        const anchor = roomUsers[0];
+
+        if (anchor) {
+            for (let radius = 1; radius <= 4 && nearbyPositions.length === 0; radius += 1) {
+                for (let dx = -radius; dx <= radius; dx += 1) {
+                    for (let dy = -radius; dy <= radius; dy += 1) {
+                        if (Math.max(Math.abs(dx), Math.abs(dy)) !== radius) {
+                            continue;
+                        }
+
+                        const x = anchor.x + dx;
+                        const y = anchor.y + dy;
+                        if (
+                            x >= 0 &&
+                            y >= 0 &&
+                            x < space.width &&
+                            y < space.height &&
+                            !occupiedPositions.has(`${x}:${y}`)
+                        ) {
+                            nearbyPositions.push({ x, y });
+                        }
+                    }
+                }
+            }
+        }
+
+        if (nearbyPositions.length > 0) {
+            const spawn = nearbyPositions[Math.floor(Math.random() * nearbyPositions.length)];
+            this.x = spawn.x;
+            this.y = spawn.y;
+        } else {
+            this.x = Math.floor(Math.random() * Math.max(1, space.width - 1));
+            this.y = Math.floor(Math.random() * space.height);
+        }
 
         RoomManager.getInstance().addUser(spaceId, this);
         this.sendSpaceJoined();
