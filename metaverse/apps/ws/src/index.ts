@@ -1,7 +1,10 @@
 import { WebSocketServer } from 'ws';
 import { User } from './User';
 
-const wss = new WebSocketServer({ port: 3001 });
+const port = process.env.PORT ? Number(process.env.PORT) : 3001;
+const wss = new WebSocketServer({ port });
+
+console.log(`WebSocket server running on port ${port}`);
 
 wss.on('connection', function connection(ws) {
   const user = new User(ws);
