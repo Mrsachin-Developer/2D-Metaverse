@@ -2,7 +2,7 @@ import { WebSocketServer } from 'ws';
 import { User } from './User';
 
 const port = process.env.PORT ? Number(process.env.PORT) : 3001;
-const wss = new WebSocketServer({ port });
+const wss = new WebSocketServer({ port, host: '0.0.0.0' });
 
 console.log(`WebSocket server running on port ${port}`);
 
