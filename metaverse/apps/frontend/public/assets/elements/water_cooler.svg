@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" shape-rendering="crispEdges">
+
+  <ellipse cx="32" cy="56" rx="10" ry="4" fill="rgba(0,0,0,0.3)" shape-rendering="auto"/>
+  <!-- Stand -->
+  <rect x="24" y="28" width="16" height="28" fill="#E2E8F0" rx="3"/>
+  <rect x="26" y="30" width="12" height="24" fill="#F8FAFC" rx="2"/>
+  <!-- Taps (Hot Red & Cold Blue) -->
+  <rect x="26" y="36" width="3" height="4" fill="#3B82F6"/>
+  <rect x="35" y="36" width="3" height="4" fill="#EF4444"/>
+  <!-- Drip Tray -->
+  <rect x="26" y="44" width="12" height="3" fill="#64748B" rx="1"/>
+  <!-- Inverted Blue Water Bottle -->
+  <ellipse cx="32" cy="26" rx="9" ry="3" fill="#0284C7" shape-rendering="auto"/>
+  <rect x="23" y="10" width="18" height="16" fill="#38BDF8" opacity="0.85" rx="4"/>
+  <ellipse cx="32" cy="10" rx="9" ry="3" fill="#BAE6FD" shape-rendering="auto"/>
+  <!-- Water Waves -->
+  <path d="M25 18 Q 32 15 39 18" stroke="#FFFFFF" stroke-width="1.5" fill="none" opacity="0.6" shape-rendering="auto"/>
+
+</svg>

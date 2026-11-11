@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" shape-rendering="crispEdges">
+
+  <ellipse cx="32" cy="58" rx="16" ry="5" fill="rgba(0,0,0,0.35)" shape-rendering="auto"/>
+  <!-- Zepto Runner Suit (Cyan & Yellow) -->
+  <rect x="21" y="32" width="22" height="18" fill="#0F172A" rx="2"/>
+  <rect x="25" y="32" width="14" height="18" fill="#0284C7"/>
+  <rect x="30" y="34" width="4" height="14" fill="#FACC15"/>
+  <!-- Jogger Pants -->
+  <rect x="24" y="50" width="6" height="8" fill="#0F172A"/>
+  <rect x="34" y="50" width="6" height="8" fill="#0F172A"/>
+  <!-- Neon Yellow Speed Trainers -->
+  <rect x="23" y="56" width="8" height="4" fill="#FACC15" rx="1"/>
+  <rect x="33" y="56" width="8" height="4" fill="#FACC15" rx="1"/>
+  <!-- Face -->
+  <rect x="23" y="16" width="18" height="18" fill="#FDBA74" rx="3"/>
+  <!-- Neon Cyan Sport Visor -->
+  <rect x="20" y="20" width="24" height="6" fill="#38BDF8" rx="2" opacity="0.95"/>
+  <line x1="22" y1="23" x2="42" y2="23" stroke="#FFFFFF" stroke-width="1.5"/>
+  <!-- Sport Headband & Hair -->
+  <rect x="21" y="11" width="22" height="7" fill="#1E293B" rx="2"/>
+  <rect x="20" y="16" width="24" height="3" fill="#FACC15"/>
+
+</svg>

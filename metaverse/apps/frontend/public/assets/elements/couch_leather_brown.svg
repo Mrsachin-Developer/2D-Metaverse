@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 64" width="128" height="64" shape-rendering="crispEdges">
+
+  <rect x="8" y="52" width="112" height="8" fill="rgba(0,0,0,0.3)" rx="4"/>
+  <!-- Backrest -->
+  <rect x="8" y="10" width="112" height="24" fill="#78350F" rx="6"/>
+  <rect x="12" y="12" width="104" height="20" fill="#92400E" rx="4"/>
+  <!-- Button Tufting details -->
+  <circle cx="26" cy="22" r="2" fill="#451A03" shape-rendering="auto"/>
+  <circle cx="46" cy="22" r="2" fill="#451A03" shape-rendering="auto"/>
+  <circle cx="64" cy="22" r="2" fill="#451A03" shape-rendering="auto"/>
+  <circle cx="82" cy="22" r="2" fill="#451A03" shape-rendering="auto"/>
+  <circle cx="102" cy="22" r="2" fill="#451A03" shape-rendering="auto"/>
+  <!-- Seat Cushions -->
+  <rect x="14" y="30" width="31" height="22" fill="#B45309" rx="3"/>
+  <rect x="49" y="30" width="31" height="22" fill="#B45309" rx="3"/>
+  <rect x="83" y="30" width="31" height="22" fill="#B45309" rx="3"/>
+  <!-- Armrests -->
+  <rect x="6" y="24" width="12" height="28" fill="#78350F" rx="4"/>
+  <rect x="8" y="26" width="8" height="24" fill="#92400E" rx="3"/>
+  <rect x="110" y="24" width="12" height="28" fill="#78350F" rx="4"/>
+  <rect x="112" y="26" width="8" height="24" fill="#92400E" rx="3"/>
+
+</svg>

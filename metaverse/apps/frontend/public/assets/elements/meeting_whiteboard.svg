@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 64" width="128" height="64" shape-rendering="crispEdges">
+
+  <ellipse cx="64" cy="56" rx="46" ry="6" fill="rgba(0,0,0,0.3)" shape-rendering="auto"/>
+  <!-- Aluminum Frame Stand & Legs -->
+  <rect x="24" y="38" width="4" height="20" fill="#64748B"/>
+  <rect x="100" y="38" width="4" height="20" fill="#64748B"/>
+  <line x1="18" y1="56" x2="34" y2="56" stroke="#475569" stroke-width="3"/>
+  <line x1="94" y1="56" x2="110" y2="56" stroke="#475569" stroke-width="3"/>
+  <!-- Whiteboard Surface -->
+  <rect x="20" y="6" width="88" height="36" fill="#334155" rx="3"/>
+  <rect x="22" y="8" width="84" height="32" fill="#F8FAFC" rx="2"/>
+  <!-- Diagram & Chart Drawn in Marker -->
+  <line x1="28" y1="32" x2="56" y2="32" stroke="#94A3B8" stroke-width="1.5"/>
+  <polyline points="30,28 36,22 42,25 48,16 54,18" fill="none" stroke="#2563EB" stroke-width="2"/>
+  <!-- Flowchart Sticky Notes -->
+  <rect x="64" y="14" width="8" height="8" fill="#FDE047" rx="1"/>
+  <rect x="76" y="14" width="8" height="8" fill="#F472B6" rx="1"/>
+  <rect x="88" y="14" width="8" height="8" fill="#67E8F9" rx="1"/>
+  <line x1="72" y1="18" x2="76" y2="18" stroke="#334155" stroke-width="1"/>
+  <line x1="84" y1="18" x2="88" y2="18" stroke="#334155" stroke-width="1"/>
+  <!-- Marker Tray -->
+  <rect x="28" y="40" width="72" height="3" fill="#94A3B8" rx="1"/>
+  <rect x="34" y="39" width="6" height="2" fill="#EF4444"/>
+  <rect x="42" y="39" width="6" height="2" fill="#2563EB"/>
+  <rect x="50" y="39" width="6" height="2" fill="#10B981"/>
+
+</svg>

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 64" width="128" height="64" shape-rendering="crispEdges">
+
+  <rect x="8" y="52" width="112" height="8" fill="rgba(0,0,0,0.3)" rx="4"/>
+  <!-- Backrest -->
+  <rect x="8" y="12" width="112" height="22" fill="#1E293B" rx="4"/>
+  <rect x="12" y="14" width="104" height="18" fill="#334155" rx="3"/>
+  <!-- Deep Cushions -->
+  <rect x="12" y="28" width="50" height="24" fill="#475569" rx="2"/>
+  <rect x="66" y="28" width="50" height="24" fill="#475569" rx="2"/>
+  <!-- Throw Pillows (Yellow & Cyan accents) -->
+  <rect x="14" y="22" width="14" height="14" fill="#FACC15" rx="3" transform="rotate(-10 21 29)"/>
+  <rect x="100" y="22" width="14" height="14" fill="#06B6D4" rx="3" transform="rotate(10 107 29)"/>
+  <!-- Armrests -->
+  <rect x="6" y="22" width="10" height="30" fill="#1E293B" rx="3"/>
+  <rect x="112" y="22" width="10" height="30" fill="#1E293B" rx="3"/>
+
+</svg>

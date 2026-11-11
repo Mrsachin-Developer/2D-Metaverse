@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" shape-rendering="crispEdges">
+
+  <ellipse cx="32" cy="54" rx="16" ry="5" fill="rgba(0,0,0,0.3)" shape-rendering="auto"/>
+  <!-- Star Base -->
+  <circle cx="32" cy="52" r="3" fill="#0284C7" shape-rendering="auto"/>
+  <line x1="20" y1="52" x2="44" y2="52" stroke="#0F172A" stroke-width="3"/>
+  <!-- Thick Seat Bucket -->
+  <rect x="18" y="36" width="28" height="12" fill="#0F172A" rx="3"/>
+  <rect x="22" y="38" width="20" height="8" fill="#0284C7" rx="2"/>
+  <!-- High Racing Backrest with Wings -->
+  <polygon points="20,36 18,16 26,10 38,10 46,16 44,36" fill="#0F172A"/>
+  <polygon points="23,34 21,18 27,13 37,13 43,18 41,34" fill="#38BDF8"/>
+  <polygon points="26,34 25,20 30,16 34,16 39,20 38,34" fill="#0284C7"/>
+  <!-- Harness Holes & Head Pillow -->
+  <rect x="28" y="18" width="8" height="3" fill="#0F172A" rx="1"/>
+  <rect x="26" y="24" width="12" height="4" fill="#F43F5E" rx="2"/>
+
+</svg>

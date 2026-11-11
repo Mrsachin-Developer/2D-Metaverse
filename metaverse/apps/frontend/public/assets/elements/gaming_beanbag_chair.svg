@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" shape-rendering="crispEdges">
+
+  <ellipse cx="32" cy="52" rx="20" ry="7" fill="rgba(0,0,0,0.35)" shape-rendering="auto"/>
+  <!-- Plump Slumped Beanbag -->
+  <ellipse cx="32" cy="38" rx="20" ry="16" fill="#991B1B" shape-rendering="auto"/>
+  <ellipse cx="32" cy="36" rx="17" ry="13" fill="#DC2626" shape-rendering="auto"/>
+  <ellipse cx="32" cy="34" rx="12" ry="8" fill="#EF4444" shape-rendering="auto"/>
+  <!-- Top Pull Handle & Stitches -->
+  <rect x="30" y="18" width="4" height="6" fill="#7F1D1D" rx="2"/>
+  <path d="M 24 32 Q 32 38 40 32" stroke="#7F1D1D" stroke-width="1.5" fill="none" shape-rendering="auto"/>
+
+</svg>

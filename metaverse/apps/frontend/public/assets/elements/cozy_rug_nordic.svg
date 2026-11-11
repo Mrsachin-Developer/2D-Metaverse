@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" shape-rendering="crispEdges">
+
+  <rect x="6" y="6" width="116" height="116" fill="#1E293B" rx="6"/>
+  <rect x="10" y="10" width="108" height="108" fill="#243048" rx="4"/>
+  <!-- Fringes -->
+  
+    <line x1="14" y1="6" x2="14" y2="9" stroke="#E2E8F0" stroke-width="1.5"/>
+    <line x1="14" y1="119" x2="14" y2="122" stroke="#E2E8F0" stroke-width="1.5"/>
+  
+    <line x1="26" y1="6" x2="26" y2="9" stroke="#E2E8F0" stroke-width="1.5"/>
+    <line x1="26" y1="119" x2="26" y2="122" stroke="#E2E8F0" stroke-width="1.5"/>
+  
+    <line x1="38" y1="6" x2="38" y2="9" stroke="#E2E8F0" stroke-width="1.5"/>
+    <line x1="38" y1="119" x2="38" y2="122" stroke="#E2E8F0" stroke-width="1.5"/>
+  
+    <line x1="50" y1="6" x2="50" y2="9" stroke="#E2E8F0" stroke-width="1.5"/>
+    <line x1="50" y1="119" x2="50" y2="122" stroke="#E2E8F0" stroke-width="1.5"/>
+  
+    <line x1="62" y1="6" x2="62" y2="9" stroke="#E2E8F0" stroke-width="1.5"/>
+    <line x1="62" y1="119" x2="62" y2="122" stroke="#E2E8F0" stroke-width="1.5"/>
+  
+    <line x1="74" y1="6" x2="74" y2="9" stroke="#E2E8F0" stroke-width="1.5"/>
+    <line x1="74" y1="119" x2="74" y2="122" stroke="#E2E8F0" stroke-width="1.5"/>
+  
+    <line x1="86" y1="6" x2="86" y2="9" stroke="#E2E8F0" stroke-width="1.5"/>
+    <line x1="86" y1="119" x2="86" y2="122" stroke="#E2E8F0" stroke-width="1.5"/>
+  
+    <line x1="98" y1="6" x2="98" y2="9" stroke="#E2E8F0" stroke-width="1.5"/>
+    <line x1="98" y1="119" x2="98" y2="122" stroke="#E2E8F0" stroke-width="1.5"/>
+  
+    <line x1="110" y1="6" x2="110" y2="9" stroke="#E2E8F0" stroke-width="1.5"/>
+    <line x1="110" y1="119" x2="110" y2="122" stroke="#E2E8F0" stroke-width="1.5"/>
+  
+  <!-- Inner Nordic Diamond Pattern -->
+  <polygon points="64,24 96,64 64,104 32,64" fill="none" stroke="#38BDF8" stroke-width="2.5"/>
+  <polygon points="64,36 84,64 64,92 44,64" fill="none" stroke="#818CF8" stroke-width="2"/>
+  <circle cx="64" cy="64" r="8" fill="#4F46E5" shape-rendering="auto"/>
+  <circle cx="64" cy="64" r="4" fill="#38BDF8" shape-rendering="auto"/>
+
+</svg>

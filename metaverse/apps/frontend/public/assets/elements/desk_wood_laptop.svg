@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" shape-rendering="crispEdges">
+
+  <!-- Shadow -->
+  <rect x="4" y="52" width="56" height="6" fill="rgba(0,0,0,0.3)" rx="3"/>
+  <!-- Desk Base Oak -->
+  <rect x="4" y="16" width="56" height="38" fill="#78350F" rx="3"/>
+  <rect x="6" y="18" width="52" height="34" fill="#B45309" rx="2"/>
+  <!-- Wood grain subtle lines -->
+  <line x1="6" y1="26" x2="58" y2="26" stroke="#92400E" stroke-width="1"/>
+  <line x1="6" y1="38" x2="58" y2="38" stroke="#92400E" stroke-width="1"/>
+  <!-- Open Silver Laptop -->
+  <rect x="18" y="10" width="28" height="18" fill="#475569" rx="2"/>
+  <rect x="20" y="12" width="24" height="14" fill="#0284C7" rx="1"/>
+  <line x1="22" y1="16" x2="38" y2="16" stroke="#BAE6FD" stroke-width="1.5"/>
+  <line x1="22" y1="20" x2="32" y2="20" stroke="#BAE6FD" stroke-width="1.5"/>
+  <!-- Laptop Keyboard Base -->
+  <polygon points="14,34 50,34 46,28 18,28" fill="#94A3B8"/>
+  <rect x="22" y="29" width="20" height="4" fill="#334155" rx="1"/>
+  <!-- Iced Drink with Straw (Gather Screenshot item!) -->
+  <circle cx="50" cy="40" r="4" fill="#E0F2FE" shape-rendering="auto"/>
+  <circle cx="50" cy="40" r="3" fill="#D97706" shape-rendering="auto"/>
+  <line x1="50" y1="40" x2="52" y2="34" stroke="#10B981" stroke-width="1.5"/>
+  <!-- Notebook & Pen -->
+  <rect x="10" y="36" width="10" height="12" fill="#F8FAFC" rx="1"/>
+  <line x1="12" y1="39" x2="18" y2="39" stroke="#94A3B8" stroke-width="1"/>
+  <line x1="12" y1="42" x2="18" y2="42" stroke="#94A3B8" stroke-width="1"/>
+
+</svg>

@@ -1,0 +1,220 @@
+@import "tailwindcss";
+
+@theme {
+  --color-meta-bg: #141417;
+  --color-meta-secondary: #1D1D22;
+  --color-meta-surface: #26262D;
+  --color-meta-elevated: #35353E;
+  --color-meta-accent: #55AA33;
+  --color-meta-accent-hover: #66BB44;
+  --color-meta-cyan: #4DEDF3;
+  --color-meta-cyan-hover: #2EC4CD;
+  --color-meta-gold: #FFAA00;
+  --color-meta-gold-hover: #FFBB22;
+  --color-meta-redstone: #FF3333;
+  --color-meta-wood: #855F37;
+  --color-meta-text: #FFFFFF;
+  --color-meta-muted: #A3A3A8;
+  --color-meta-border: rgba(255, 255, 255, 0.12);
+  --color-meta-border-strong: rgba(255, 255, 255, 0.24);
+
+  --shadow-glow-accent: 0 0 16px -2px rgba(85, 170, 51, 0.35);
+  --shadow-glow-cyan: 0 0 16px -2px rgba(77, 237, 243, 0.35);
+}
+
+:root {
+  color-scheme: dark;
+}
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #141417;
+  /* Minecraft subtle stone background pattern */
+  background-image: 
+    linear-gradient(rgba(20, 20, 23, 0.94), rgba(20, 20, 23, 0.94)),
+    repeating-linear-gradient(0deg, #18181C 0px, #18181C 2px, transparent 2px, transparent 16px),
+    repeating-linear-gradient(90deg, #18181C 0px, #18181C 2px, transparent 2px, transparent 16px);
+  color: #FFFFFF;
+  font-family: 'Consolas', 'Courier New', ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* -------------------------------------------------------------
+   MINECRAFT THEME UTILITY CLASSES
+   ------------------------------------------------------------- */
+
+/* Blocky Pixel Text Shadow (Classic Minecraft chat/title shadow) */
+.mc-text {
+  text-shadow: 2px 2px 0px #000000;
+  letter-spacing: -0.02em;
+}
+
+.mc-text-gold {
+  color: #FFAA00;
+  text-shadow: 2px 2px 0px #3F2A00;
+}
+
+.mc-text-diamond {
+  color: #4DEDF3;
+  text-shadow: 2px 2px 0px #114245;
+}
+
+.mc-text-emerald {
+  color: #55FF55;
+  text-shadow: 2px 2px 0px #134513;
+}
+
+/* Classic Minecraft GUI Panel (Stone/Deepslate Inset & Outset Bevel) */
+.mc-panel {
+  background-color: #26262D;
+  border-top: 3px solid #585860;
+  border-left: 3px solid #585860;
+  border-right: 3px solid #101014;
+  border-bottom: 3px solid #101014;
+  box-shadow: 
+    inset 1px 1px 0px #6A6A74,
+    inset -1px -1px 0px #18181C,
+    0px 6px 0px rgba(0, 0, 0, 0.6);
+  border-radius: 0px !important;
+}
+
+/* Minecraft Inventory Slot (Inset Shadow for item frames & inputs) */
+.mc-slot {
+  background-color: #121215;
+  border-top: 2px solid #09090B;
+  border-left: 2px solid #09090B;
+  border-right: 2px solid #3E3E48;
+  border-bottom: 2px solid #3E3E48;
+  box-shadow: inset 2px 2px 0px rgba(0, 0, 0, 0.8);
+  border-radius: 0px !important;
+}
+
+/* Minecraft Button (3D Block Style with Top/Left Highlight, Bottom/Right Shadow) */
+.mc-btn {
+  font-family: inherit;
+  font-weight: bold;
+  border-radius: 0px !important;
+  text-shadow: 1px 1px 0px #000000;
+  position: relative;
+  transition: filter 0.08s ease, transform 0.05s ease;
+  cursor: pointer;
+  user-select: none;
+}
+
+.mc-btn:active:not(:disabled) {
+  transform: translateY(2px);
+  box-shadow: inset 2px 2px 0px rgba(0, 0, 0, 0.6) !important;
+}
+
+/* Stone Gray Button (Standard Minecraft Button) */
+.mc-btn-stone {
+  background-color: #4A4A52;
+  border-top: 2px solid #787882;
+  border-left: 2px solid #787882;
+  border-right: 2px solid #1C1C20;
+  border-bottom: 2px solid #1C1C20;
+  color: #FFFFFF;
+}
+.mc-btn-stone:hover:not(:disabled) {
+  background-color: #5A5A64;
+  border-top-color: #8C8C98;
+  border-left-color: #8C8C98;
+}
+
+/* Emerald Green Button (Primary / Action) */
+.mc-btn-emerald {
+  background-color: #38761D;
+  border-top: 2px solid #5B9E38;
+  border-left: 2px solid #5B9E38;
+  border-right: 2px solid #183C08;
+  border-bottom: 2px solid #183C08;
+  color: #FFFFFF;
+  box-shadow: inset 1px 1px 0px #70C545, inset -1px -1px 0px #24580C;
+}
+.mc-btn-emerald:hover:not(:disabled) {
+  background-color: #468E24;
+}
+
+/* Diamond Cyan Button (Special / Creative) */
+.mc-btn-diamond {
+  background-color: #176B70;
+  border-top: 2px solid #2DC1CA;
+  border-left: 2px solid #2DC1CA;
+  border-right: 2px solid #0B3E42;
+  border-bottom: 2px solid #0B3E42;
+  color: #FFFFFF;
+  box-shadow: inset 1px 1px 0px #4DEDF3, inset -1px -1px 0px #0F5055;
+}
+.mc-btn-diamond:hover:not(:disabled) {
+  background-color: #1E8288;
+}
+
+/* Gold / Oak Button */
+.mc-btn-gold {
+  background-color: #9A6F14;
+  border-top: 2px solid #E0A625;
+  border-left: 2px solid #E0A625;
+  border-right: 2px solid #523905;
+  border-bottom: 2px solid #523905;
+  color: #FFFFFF;
+  box-shadow: inset 1px 1px 0px #FACC15, inset -1px -1px 0px #664808;
+}
+.mc-btn-gold:hover:not(:disabled) {
+  background-color: #B48318;
+}
+
+/* Redstone Button (Danger / Cancel) */
+.mc-btn-redstone {
+  background-color: #881A1A;
+  border-top: 2px solid #C43232;
+  border-left: 2px solid #C43232;
+  border-right: 2px solid #480A0A;
+  border-bottom: 2px solid #480A0A;
+  color: #FFFFFF;
+}
+.mc-btn-redstone:hover:not(:disabled) {
+  background-color: #A32020;
+}
+
+/* Blocky Minecraft custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #141417;
+  border-left: 1px solid #26262D;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #4A4A52;
+  border-top: 2px solid #787882;
+  border-left: 2px solid #787882;
+  border-right: 2px solid #1C1C20;
+  border-bottom: 2px solid #1C1C20;
+  border-radius: 0px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #55AA33;
+  border-top-color: #70C545;
+  border-left-color: #70C545;
+}
+
+/* Crisp rendering for canvas and pixel graphics */
+canvas.pixelated, img, svg {
+  image-rendering: -moz-crisp-edges;
+  image-rendering: -webkit-crisp-edges;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+/* Block focus outlines */
+*:focus-visible {
+  outline: 2px solid #4DEDF3;
+  outline-offset: 1px;
+}

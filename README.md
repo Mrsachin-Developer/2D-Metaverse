@@ -1,224 +1,384 @@
-﻿# 2D Metaverse
+# 🌐 2D Metaverse
 
-A small monorepo for a multiplayer 2D metaverse prototype with:
+A real-time multiplayer 2D metaverse platform where users can create virtual spaces, place interactive elements, and move around with other players in a shared grid-based world — rendered with a **custom HTML5 Canvas engine** and synced over **WebSockets**.
 
-- React + Vite frontend
-- Express REST API
-- WebSocket multiplayer server
-- Prisma + PostgreSQL data layer
-- Turborepo workspace orchestration
+Built as a full-stack **TypeScript monorepo** powered by **Turborepo**.
 
-## Tech stack
+![Node.js](https://img.shields.io/badge/Node.js-20+-339933?logo=node.js&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white)
+![React](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=black)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15-4169E1?logo=postgresql&logoColor=white)
+![Prisma](https://img.shields.io/badge/Prisma-ORM-2D3748?logo=prisma&logoColor=white)
 
-- Node.js 20+
-- TypeScript
-- React 18
-- Express
-- ws (WebSocket server)
-- Prisma ORM
-- PostgreSQL
-- Turbo repo
+---
 
-## Repository structure
+## ✨ Features
 
-```text
-metaverse/
-├── apps/
-│   ├── frontend/      # React client
-│   ├── http/          # Express API
-│   └── ws/            # Multiplayer WebSocket server
-├── packages/
-│   ├── db/            # Prisma schema and generated client
-│   ├── eslint-config/
-│   ├── typescript-config/
-│   └── ui/
-├── .env               # Local environment variables
-├── package.json
-├── turbo.json
-├── pnpm-workspace.yaml
-├── package-lock.json
+- **User Authentication** — Signup/signin with JWT tokens and scrypt password hashing (with `timingSafeEqual`)
+- **Avatar System** — Choose from admin-created SVG avatars (10+ character sprites)
+- **Space Management** — Create, delete, and browse virtual 2D spaces; optionally use map templates
+- **Element Placement** — Add, reposition, and remove SVG elements (30+ furniture/decor items) within spaces
+- **Real-Time Multiplayer** — WebSocket-driven live presence: see other players join, move, and leave
+- **Server-Validated Movement** — Tile-based movement with server-side validation (single-step orthogonal only, boundary checks)
+- **2D Canvas Game Engine** — Custom `requestAnimationFrame` renderer with Minecraft-themed tiled floor, smooth camera interpolation, 2.5D depth-sorted players, nametags, and emoji speech bubbles
+- **Minimap** — Toggleable minimap overlay for spatial awareness
+- **Emoji Reactions** — In-game emoji reaction system with speech bubbles
+- **Build Mode** — Place elements at your current position in the arena
+- **Map Templates** — Admins can create reusable map templates with pre-placed elements
+- **Admin Studio** — Admin panel for managing elements, avatars, and map templates
+- **Featured Community Worlds** — Pre-built maps (Multi-Room Campus, Coffee Lounge, Keynote Auditorium)
+- **CI/CD Pipeline** — GitHub Actions workflow for automated testing and builds
+
+---
+
+## 🏗️ Architecture
+
+```
+┌─────────────┐       HTTP (REST)       ┌──────────────┐       Prisma       ┌──────────────┐
+│   Frontend   │ ◄───────────────────► │  HTTP Server  │ ◄──────────────► │  PostgreSQL   │
+│  (React +    │                        │  (Express)    │                   │  (Docker)     │
+│   Canvas)    │                        │  Port 3000    │                   │  Port 5432    │
+│  Port 5173   │       WebSocket        ├──────────────┤                   └──────────────┘
+│              │ ◄───────────────────► │  WS Server    │ ◄──────────────►       ▲
+└─────────────┘                        │  (ws)         │       Prisma          │
+                                        │  Port 3001    │                       │
+                                        └──────────────┘                       │
+                                                                                │
+                                        ┌──────────────┐                       │
+                                        │  @repo/db     │ ──────────────────────┘
+                                        │  (Shared      │
+                                        │   Prisma pkg) │
+                                        └──────────────┘
+```
+
+---
+
+## 📁 Repository Structure
+
+```
+2d-metaverse v2/
+├── metaverse/                        # Turborepo monorepo root
+│   ├── apps/
+│   │   ├── frontend/                 # React + Vite + Canvas SPA
+│   │   │   └── src/
+│   │   │       ├── pages/            # Arena, Dashboard, Signin, Signup
+│   │   │       ├── components/
+│   │   │       │   ├── arena/        # ArenaCanvas, ArenaControls, ArenaSidebar, BuildElementModal
+│   │   │       │   ├── admin/        # AdminStudioModal
+│   │   │       │   ├── avatar/       # AvatarSelectModal
+│   │   │       │   ├── dashboard/    # CreateSpaceModal, SpaceCard
+│   │   │       │   ├── layout/       # Navbar
+│   │   │       │   └── ui/           # Avatar, Badge, Button, Card, Input, Modal, Toast
+│   │   │       ├── hooks/            # useWebSocket, usePlayerMovement, useAuth
+│   │   │       ├── services/         # api, auth, space, avatar, admin service layers
+│   │   │       ├── context/          # AuthContext (JWT + localStorage session)
+│   │   │       ├── assets/           # 10 avatar SVGs + 30+ element SVGs
+│   │   │       ├── types/            # API & WebSocket TypeScript interfaces
+│   │   │       └── utils/            # Sound utilities
+│   │   ├── http/                     # Express REST API
+│   │   │   └── src/
+│   │   │       ├── routes/v1/        # user, space, admin route handlers
+│   │   │       ├── middleware/       # JWT auth (user) + admin role middleware
+│   │   │       ├── types/            # Zod validation schemas
+│   │   │       ├── config.ts         # JWT_PASSWORD from env
+│   │   │       └── scrypt.ts         # Password hashing (scrypt + timingSafeEqual)
+│   │   └── ws/                       # WebSocket multiplayer server
+│   │       └── src/
+│   │           ├── User.ts           # Connection handler (join, move, spawn logic)
+│   │           └── RoomManager.ts    # Room/space session management (singleton)
+│   ├── packages/
+│   │   └── db/                       # Shared Prisma schema & client (@repo/db)
+│   │       └── prisma/
+│   │           ├── schema.prisma     # 7 database models
+│   │           └── migrations/       # 5 migration files
+│   └── turbo.json                    # Turborepo pipeline config
+├── tests/                            # Integration & WebSocket E2E tests
+│   └── index.test.js                 # 1242 lines, 31 tests across 7 suites
+├── docker-compose.yml                # PostgreSQL 15 container
+├── .github/workflows/
+│   └── deploy.yml                    # CI pipeline
+├── package.json                      # Root workspace config & scripts
 └── README.md
 ```
 
-## Prerequisites
+---
 
-Before running the project, make sure you have:
+## 🗄️ Database Schema
 
-- Node.js 20 or newer
-- npm (preferred for this repo) or pnpm
-- PostgreSQL database access
-- A local `.env` file in the repo root
+| Model | Description |
+|---|---|
+| **User** | Username (unique), scrypt-hashed password, role (`User` / `Admin`), optional avatarId |
+| **Space** | Virtual room with name, dimensions (width × height), thumbnail, creator relation |
+| **SpaceElements** | Instance of an Element placed in a Space at (x, y), optionally static |
+| **Element** | Reusable tile/object definition (imageUrl, width, height, static flag) |
+| **Map** | Predefined map template (width, height, name, thumbnail) |
+| **MapElements** | Elements pre-placed in a Map at (x, y) |
+| **Avatar** | Character sprite (imageUrl, name) |
 
-## Environment variables
+---
 
-Create a root `.env` file with at least:
+## 🔌 API Reference
 
-```env
-DATABASE_URL="postgresql://<user>:<password>@<host>:<port>/<db>?sslmode=require"
-JWT_PASSWORD="your-long-random-secret"
+### Authentication — `/api/v1`
+
+| Method | Endpoint | Auth | Description |
+|---|---|---|---|
+| POST | `/signup` | ✗ | Register a new user (Admin or User role) |
+| POST | `/signin` | ✗ | Login and receive JWT token |
+
+### User Routes — `/api/v1/user`
+
+| Method | Endpoint | Auth | Description |
+|---|---|---|---|
+| POST | `/metadata` | ✓ | Update user's avatar selection |
+| GET | `/metadata/bulk?ids=[...]` | ✓ | Get avatar info for multiple users |
+
+### Space Routes — `/api/v1/space`
+
+| Method | Endpoint | Auth | Description |
+|---|---|---|---|
+| POST | `/` | ✓ | Create a new space (with optional mapId for templates) |
+| DELETE | `/:spaceId` | ✓ | Delete a space (owner only, cascades elements) |
+| GET | `/all` | ✓ | List all spaces for current user |
+| GET | `/:spaceId` | ✓ | Get space details with all elements |
+| POST | `/element` | ✓ | Add an element to a space (with bounds checking) |
+| DELETE | `/element` | ✓ | Remove an element from a space (owner only) |
+
+### Admin Routes — `/api/v1/admin`
+
+| Method | Endpoint | Auth | Description |
+|---|---|---|---|
+| POST | `/element` | Admin | Create a new element |
+| PUT | `/element/:elementId` | Admin | Update an element's imageUrl |
+| POST | `/avatar` | Admin | Create a new avatar |
+| POST | `/map` | Admin | Create a map template with default elements |
+
+### Public Routes — `/api/v1`
+
+| Method | Endpoint | Auth | Description |
+|---|---|---|---|
+| GET | `/elements` | ✗ | List all available elements |
+| GET | `/avatars` | ✗ | List all available avatars |
+
+---
+
+## 🎮 WebSocket Protocol
+
+The WebSocket server runs on **port 3001** and uses a JSON message protocol.
+
+### Client → Server
+
+| Type | Payload | Description |
+|---|---|---|
+| `join` | `{ spaceId, token }` | Join a space (authenticates via JWT) |
+| `move` | `{ x, y }` | Request movement to a tile |
+
+### Server → Client
+
+| Type | Payload | Description |
+|---|---|---|
+| `space-joined` | `{ spawn: {x,y}, users: [{id}] }` | Confirmation with spawn point and existing users |
+| `join-rejected` | — | Invalid token or space |
+| `user-joined` | `{ userId, x, y }` | Broadcast: another player entered |
+| `movement` | `{ x, y }` or `{ x, y, userId }` | Accepted move (self) / broadcast (others) |
+| `movement-rejected` | `{ x, y }` | Invalid move — returns original position |
+| `user-left` | `{ userId }` | Broadcast: a player disconnected |
+
+**Movement Rules:** Only single-tile orthogonal moves are allowed (no diagonals). The server validates bounds against the space dimensions. Messages are processed through a serial queue (`Promise` chain) to prevent race conditions.
+
+**Spawn Logic:** New players spawn near existing players using an expanding-radius search algorithm.
+
+---
+
+## 🛠️ Tech Stack
+
+| Layer | Technology |
+|---|---|
+| **Monorepo** | Turborepo + npm workspaces |
+| **Frontend** | React 18, Vite, Tailwind CSS 4, Lucide React icons |
+| **Game Engine** | Custom HTML5 Canvas with `requestAnimationFrame`, smooth camera interpolation (0.32 lerp), 2.5D depth sorting |
+| **HTTP API** | Express, Zod validation, JWT (jsonwebtoken), scrypt (Node.js crypto) |
+| **WebSocket** | `ws` library (raw WebSocket server) |
+| **Database** | PostgreSQL 15 (Docker), Prisma ORM (with `@prisma/adapter-pg`) |
+| **Build** | esbuild (backend), Vite (frontend) |
+| **Testing** | Jest 29 (integration tests), Axios, ws client |
+| **CI/CD** | GitHub Actions |
+| **Language** | TypeScript (end-to-end) |
+
+---
+
+## 🎨 Frontend Architecture
+
+```
+App.tsx (AuthProvider)
+├── Signin / Signup          ← Auth forms
+├── Dashboard                ← Space management, avatar wardrobe, admin studio
+│   ├── Featured worlds      ← 3 pre-built community maps
+│   ├── My worlds grid       ← SpaceCards with create/delete
+│   ├── CreateSpaceModal     ← Map template selection
+│   ├── AvatarSelectModal    ← Character sprite picker
+│   └── AdminStudioModal     ← Element, avatar, map creation
+└── Arena                    ← The multiplayer game view
+    ├── ArenaCanvas          ← Custom Canvas renderer (487 lines)
+    │   ├── Minecraft-style tiled floor
+    │   ├── SVG element rendering (with image cache)
+    │   ├── 2.5D depth-sorted players
+    │   ├── Smooth camera following (lerp interpolation)
+    │   ├── Nametags & emoji speech bubbles
+    │   ├── Stone-brick wall borders
+    │   └── Minimap overlay
+    ├── ArenaControls        ← D-pad, emoji reactions, build, minimap toggle
+    ├── ArenaSidebar         ← Player roster, share link
+    └── BuildElementModal    ← Place elements at current position
 ```
 
-Notes:
-- `DATABASE_URL` is required by Prisma.
-- `JWT_PASSWORD` is used for signing/verifying authenticated tokens.
-- Keep this file local and do not commit real secrets.
+**Custom Hooks:**
+- `useWebSocket` — Full WebSocket lifecycle, message handling, optimistic movement updates
+- `usePlayerMovement` — WASD/Arrow key + D-pad input with obstacle collision detection
+- `useAuth` — Authentication context consumer
 
-## Install dependencies
+---
 
-From the repo root:
+## 🚀 Getting Started
+
+### Prerequisites
+
+- **Node.js** 20 or newer
+- **npm** (ships with Node)
+- **Docker** & Docker Compose (for PostgreSQL)
+
+### 1. Clone & Install
 
 ```bash
+git clone <repo-url>
+cd 2d-metaverse-v2
 npm install
 ```
 
-If you prefer pnpm, this repo is configured for pnpm as well:
+### 2. Environment Variables
 
-```bash
-pnpm install
+Create a `.env` file in the `metaverse/` directory:
+
+```env
+DATABASE_URL="postgresql://postgres:mypassword@localhost:5432/metaverse"
+JWT_PASSWORD="your-long-random-secret"
 ```
 
-## Generate Prisma client
+| Variable | Required | Description |
+|---|---|---|
+| `DATABASE_URL` | ✓ | PostgreSQL connection string |
+| `JWT_PASSWORD` | ✓ | Secret for signing/verifying JWT tokens |
 
-After installing dependencies, generate the Prisma client:
-
-```bash
-cd packages/db
-npx prisma generate
-```
-
-If you need to apply schema changes to the database, run migrations from the same package:
+### 3. Start PostgreSQL
 
 ```bash
-cd packages/db
-npx prisma migrate deploy
+docker-compose up -d
 ```
 
-For local development with a fresh database, you may also use:
+This spins up a PostgreSQL 15 container on port **5432** with:
+- User: `postgres` · Password: `mypassword` · Database: `metaverse`
+
+### 4. Set Up the Database
 
 ```bash
-cd packages/db
-npx prisma migrate dev
+# Generate the Prisma client
+npm run db:generate
+
+# Push the schema to the database
+npm run db:push
 ```
 
-## Run the app in development mode
-
-From the repo root, run:
+### 5. Start Development Servers
 
 ```bash
 npm run dev
 ```
 
-This starts the Turbo workspace tasks for the apps in the monorepo.
+This starts all three services via Turborepo:
 
-### App ports
+| Service | URL |
+|---|---|
+| Frontend | http://localhost:5173 |
+| HTTP API | http://localhost:3000 |
+| WebSocket | ws://localhost:3001 |
 
-- Frontend: http://localhost:5173
-- HTTP API: http://localhost:3000
-- WebSocket server: ws://localhost:3001
+### 6. Open the App
 
-## Run individual apps manually
+Navigate to **http://localhost:5173** — sign up, create a space, and start exploring!
 
-If you want to start only one app:
+---
 
-### Frontend
+## 🧪 Testing
 
-```bash
-cd apps/frontend
-npm run dev
-```
+The project includes a comprehensive integration test suite that exercises the full stack end-to-end.
 
-### HTTP API
+### Running Tests
 
-```bash
-cd apps/http
-npm run dev
-```
-
-### WebSocket server
+> **Note:** The HTTP server (port 3000) and WebSocket server (port 3001) must be running before executing tests.
 
 ```bash
-cd apps/ws
-npm run dev
+npm test
 ```
 
-## Production build
+### Test Coverage
 
-Build the full workspace:
+The test suite ([`tests/index.test.js`](file:///d:/A%20Work/PROJECT%20ZONE/Resume%20Project/2d-metaverse%20v2/tests/index.test.js)) contains **1242 lines** with **31 tests** across **7 suites**:
 
-```bash
-npm run build
-```
+| Suite | Tests | What's Covered |
+|---|---|---|
+| **Authentication** | 4 | Signup uniqueness, empty username validation, correct signin returns token, wrong credentials fail |
+| **User Metadata** | 4 | Avatar update (valid/invalid), auth middleware enforcement, metadata queries |
+| **User Avatar Info** | 2 | Bulk avatar info by user IDs, avatar catalog listing |
+| **Space Information** | 8 | Create with/without mapId, dimension validation, delete (own/others/nonexistent), list, get with elements |
+| **Arena Endpoints** | — | Element add, position update, delete, cross-user access control |
+| **Admin Endpoints** | 3 | Role-based access control (403 for non-admin), admin CRUD for elements/avatars/maps, element update |
+| **WebSocket** | 4 | Join + spawn ack, boundary rejection, two-block move rejection, movement broadcast, user-left on disconnect |
 
-This runs the Turbo build pipeline for all apps and packages.
+**Test infrastructure:** Creates full data chains per run (signup → signin → create avatar → elements → map → space → test operations) with randomized usernames.
 
-## Useful commands
+---
 
-### Root-level
+## 📜 Available Scripts
 
-```bash
-npm run build
-npm run dev
-npm run lint
-```
+All scripts run from the repository root:
 
-### Database
+| Command | Description |
+|---|---|
+| `npm run dev` | Start all services in development mode (via Turborepo) |
+| `npm run build` | Build all apps and packages |
+| `npm test` | Run the integration test suite |
+| `npm run db:generate` | Generate the Prisma client |
+| `npm run db:migrate` | Run Prisma migrations |
+| `npm run db:push` | Push schema changes directly to the database |
+| `npm run db:seed` | Seed the database with initial data |
 
-```bash
-cd packages/db
-npx prisma studio
-npx prisma generate
-npx prisma migrate dev
-npx prisma migrate deploy
-```
+---
 
-## Notes about current project status
+## 🤝 CI/CD
 
-This repository is a prototype project and is not yet fully hardened for production. In particular:
+The GitHub Actions pipeline ([`.github/workflows/deploy.yml`](file:///d:/A%20Work/PROJECT%20ZONE/Resume%20Project/2d-metaverse%20v2/.github/workflows/deploy.yml)) runs on push:
 
-- the frontend uses a local WebSocket URL
-- the backend relies on a shared JWT secret from `.env`
-- some auth and authorization flows are still simple and should be reviewed before public production use
-- there is no dedicated automated test suite configured in the repo yet
+1. **Checkout** code → **Setup** Node.js 20
+2. `npm install`
+3. Start **PostgreSQL** service container
+4. **Generate** Prisma client → **Push** schema
+5. Run full **test suite**
+6. **Build** all applications
 
-## Troubleshooting
+---
 
-### Prisma errors
+## 📝 Project Status
 
-If Prisma cannot connect to the database:
+This is a **portfolio / prototype project**. Current areas for improvement:
 
-1. Check the `DATABASE_URL` in your root `.env`
-2. Ensure the PostgreSQL server is reachable
-3. Run:
+- Frontend uses a hardcoded local WebSocket URL (configurable via `VITE_WS_URL`)
+- No rate limiting or advanced security hardening
+- Element rendering uses SVG sprites (functional, but not pixel-art style)
+- No unit tests — the test suite is integration/E2E only
+- `Game.tsx` is a legacy standalone renderer (production uses the `Arena` + `ArenaCanvas` system)
 
-```bash
-cd packages/db
-npx prisma validate
-```
+---
 
-### Port already in use
+## 📄 License
 
-If 3000, 3001, or 5173 is already occupied:
-
-- stop the conflicting process, or
-- change the port in the respective app before running it again
-
-### Missing environment variables
-
-Make sure the repo root `.env` contains both:
-
-- `DATABASE_URL`
-- `JWT_PASSWORD`
-
-## Project flow summary
-
-1. Configure the `.env` file
-2. Install dependencies with `npm install`
-3. Generate Prisma client
-4. Start the app with `npm run dev`
-5. Open the frontend in the browser
-6. Use the HTTP API for auth and resource operations
-7. Connect WebSocket clients to the multiplayer server for live game state
-
-## License
-
-This project does not currently declare a license in the repo root. If this is meant for shared or production use, add a license file before distribution.
+This project does not currently declare a license. Add a `LICENSE` file before distribution.

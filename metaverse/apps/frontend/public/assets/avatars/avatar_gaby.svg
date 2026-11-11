@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" shape-rendering="crispEdges">
+
+  <ellipse cx="32" cy="58" rx="16" ry="5" fill="rgba(0,0,0,0.35)" shape-rendering="auto"/>
+  <!-- Mint Green Sweater -->
+  <rect x="20" y="32" width="24" height="18" fill="#2DD4BF" rx="3"/>
+  <rect x="25" y="32" width="14" height="18" fill="#5EEAD4"/>
+  <!-- Crossbody Bag Strap -->
+  <line x1="22" y1="32" x2="42" y2="48" stroke="#78350F" stroke-width="2.5"/>
+  <rect x="38" y="44" width="7" height="6" fill="#92400E" rx="1"/>
+  <!-- Dark Leggings & Warm Boots -->
+  <rect x="25" y="50" width="5" height="8" fill="#18181B"/>
+  <rect x="34" y="50" width="5" height="8" fill="#18181B"/>
+  <rect x="24" y="56" width="7" height="4" fill="#B45309" rx="1"/>
+  <rect x="33" y="56" width="7" height="4" fill="#B45309" rx="1"/>
+  <!-- Face -->
+  <rect x="23" y="16" width="18" height="18" fill="#FBCFE8" rx="3"/>
+  <rect x="26" y="24" width="3" height="3" fill="#1E293B"/>
+  <rect x="35" y="24" width="3" height="3" fill="#1E293B"/>
+  <rect x="25" y="27" width="2" height="1" fill="#F43F5E"/>
+  <rect x="37" y="27" width="2" height="1" fill="#F43F5E"/>
+  <!-- Coral Knit Beanie -->
+  <ellipse cx="32" cy="14" rx="12" ry="7" fill="#FB7185" shape-rendering="auto"/>
+  <rect x="20" y="15" width="24" height="4" fill="#E11D48" rx="2"/>
+  <circle cx="32" cy="7" r="2.5" fill="#FDA4AF"/>
+
+</svg>

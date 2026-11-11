@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" shape-rendering="crispEdges">
+
+  <ellipse cx="32" cy="58" rx="16" ry="5" fill="rgba(0,0,0,0.35)" shape-rendering="auto"/>
+  <!-- Corgi Body -->
+  <ellipse cx="32" cy="44" rx="14" ry="12" fill="#D97706" shape-rendering="auto"/>
+  <ellipse cx="32" cy="46" rx="8" ry="8" fill="#FEF3C7" shape-rendering="auto"/>
+  <!-- Red Bandana -->
+  <polygon points="26,38 38,38 32,45" fill="#EF4444"/>
+  <!-- Paws -->
+  <rect x="23" y="53" width="6" height="5" fill="#FEF3C7" rx="2"/>
+  <rect x="35" y="53" width="6" height="5" fill="#FEF3C7" rx="2"/>
+  <!-- Corgi Head -->
+  <circle cx="32" cy="26" r="12" fill="#D97706" shape-rendering="auto"/>
+  <ellipse cx="32" cy="28" rx="6" ry="6" fill="#FEF3C7" shape-rendering="auto"/>
+  <!-- Big Pointy Ears -->
+  <polygon points="22,20 17,9 26,14" fill="#D97706"/>
+  <polygon points="21,18 18,11 24,15" fill="#FCA5A5"/>
+  <polygon points="42,20 47,9 38,14" fill="#D97706"/>
+  <polygon points="43,18 46,11 40,15" fill="#FCA5A5"/>
+  <!-- Cute Eyes & Nose -->
+  <circle cx="28" cy="24" r="2" fill="#000000" shape-rendering="auto"/>
+  <circle cx="36" cy="24" r="2" fill="#000000" shape-rendering="auto"/>
+  <ellipse cx="32" cy="28" rx="2" ry="1.5" fill="#000000" shape-rendering="auto"/>
+  <path d="M30 30 Q 32 33 34 30" fill="none" stroke="#D97706" stroke-width="1.5" shape-rendering="auto"/>
+
+</svg>

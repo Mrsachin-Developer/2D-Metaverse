@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" shape-rendering="crispEdges">
+
+  <ellipse cx="32" cy="46" rx="16" ry="6" fill="rgba(0,0,0,0.3)" shape-rendering="auto"/>
+  <!-- Curled Body -->
+  <ellipse cx="32" cy="38" rx="14" ry="11" fill="#18181B" shape-rendering="auto"/>
+  <ellipse cx="32" cy="38" rx="10" ry="7" fill="#27272A" shape-rendering="auto"/>
+  <!-- Curled Tail -->
+  <path d="M 44 38 C 48 30, 42 22, 38 24 C 36 26, 40 32, 42 36" stroke="#18181B" stroke-width="3" fill="none" stroke-linecap="round" shape-rendering="auto"/>
+  <!-- Cat Head -->
+  <circle cx="24" cy="34" r="8" fill="#18181B" shape-rendering="auto"/>
+  <!-- Little Pointy Ears -->
+  <polygon points="18,29 17,21 23,26" fill="#18181B"/>
+  <polygon points="25,26 30,21 29,29" fill="#18181B"/>
+  <!-- Sleeping Closed Eyes -->
+  <path d="M 20 34 Q 22 36 24 34" stroke="#A1A1AA" stroke-width="1" fill="none" shape-rendering="auto"/>
+  <path d="M 26 34 Q 28 36 30 34" stroke="#A1A1AA" stroke-width="1" fill="none" shape-rendering="auto"/>
+  <!-- Tiny Pink Nose -->
+  <polygon points="25,36 27,36 26,37" fill="#F472B6"/>
+
+</svg>

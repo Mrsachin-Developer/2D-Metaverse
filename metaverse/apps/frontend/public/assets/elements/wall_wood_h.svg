@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" shape-rendering="crispEdges">
+
+  <!-- Dark Foundation Wall Shadow -->
+  <rect x="0" y="44" width="64" height="20" fill="#141824"/>
+  <!-- Main Wall Structure -->
+  <rect x="0" y="0" width="64" height="48" fill="#451A03"/>
+  <!-- Oak Planks with Bevel Trim -->
+  <rect x="0" y="2" width="64" height="14" fill="#78350F"/>
+  <rect x="0" y="18" width="64" height="14" fill="#855F37"/>
+  <rect x="0" y="34" width="64" height="12" fill="#5C3A1E"/>
+  <line x1="0" y1="16" x2="64" y2="16" stroke="#2E1202" stroke-width="2"/>
+  <line x1="0" y1="32" x2="64" y2="32" stroke="#2E1202" stroke-width="2"/>
+  <!-- Baseboard trim -->
+  <rect x="0" y="46" width="64" height="4" fill="#2E1202"/>
+
+</svg>

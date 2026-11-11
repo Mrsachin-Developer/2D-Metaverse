@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 64" width="128" height="64" shape-rendering="crispEdges">
+
+  <rect x="10" y="52" width="108" height="8" fill="rgba(0,0,0,0.3)" rx="4"/>
+  <!-- Sturdy Desk Frame -->
+  <rect x="14" y="18" width="100" height="36" fill="#1E293B" rx="3"/>
+  <rect x="16" y="20" width="96" height="32" fill="#334155" rx="2"/>
+  <!-- Left Screen (Code / Terminal) -->
+  <rect x="24" y="6" width="34" height="22" fill="#0F172A" rx="2"/>
+  <rect x="26" y="8" width="30" height="18" fill="#0369A1" rx="1"/>
+  <line x1="28" y1="12" x2="52" y2="12" stroke="#BAE6FD" stroke-width="1.5"/>
+  <line x1="28" y1="16" x2="44" y2="16" stroke="#BAE6FD" stroke-width="1.5"/>
+  <line x1="28" y1="20" x2="48" y2="20" stroke="#BAE6FD" stroke-width="1.5"/>
+  <rect x="38" y="28" width="6" height="5" fill="#64748B"/>
+  <!-- Right Screen (Design / Dashboard) -->
+  <rect x="66" y="6" width="34" height="22" fill="#0F172A" rx="2"/>
+  <rect x="68" y="8" width="30" height="18" fill="#4C1D95" rx="1"/>
+  <circle cx="83" cy="17" r="5" fill="#A855F7" shape-rendering="auto"/>
+  <rect x="80" y="28" width="6" height="5" fill="#64748B"/>
+  <!-- Desk Mat, Keyboard, Mouse -->
+  <rect x="42" y="38" width="44" height="12" fill="#0F172A" rx="1"/>
+  <rect x="46" y="40" width="22" height="7" fill="#475569" rx="1"/>
+  <rect x="74" y="41" width="5" height="6" fill="#64748B" rx="2"/>
+  <!-- Coffee Mug -->
+  <circle cx="100" cy="40" r="3.5" fill="#EF4444" shape-rendering="auto"/>
+
+</svg>
