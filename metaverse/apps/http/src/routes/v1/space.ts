@@ -169,7 +169,6 @@ spaceRouter.post("/element", userMiddleware, asyncHandler(async (req, res) => {
     const space = await client.space.findUnique({
         where: {
             id: parsedData.data.spaceId,
-            creatorId: req.userId!
         }, select: {
             width: true,
             height: true
