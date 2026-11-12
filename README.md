@@ -12,6 +12,30 @@ Built as a full-stack **TypeScript monorepo** powered by **Turborepo**.
 
 ---
 
+## 📸 Project Screenshots
+
+### 🌍 Multiplayer Arena
+Experience real-time multiplayer interaction in a shared virtual space.
+
+![Multiplayer Arena](./screenshots/arena.png)
+
+### 🛠️ Map Builder
+Customize virtual spaces by placing furniture, workstations, and decorative elements on the grid.
+
+![Map Builder](./screenshots/map-builder.png)
+
+### 🏠 Dashboard & Community Worlds
+Browse custom worlds and explore featured multiplayer environments.
+
+![Dashboard](./screenshots/dashboard.png)
+
+### 🎭 Avatar Wardrobe
+Choose and customize your pixel-art avatar across different metaverse spaces.
+
+![Avatar Wardrobe](./screenshots/avatar-wardrobe.png)
+
+---
+
 ## ✨ Features
 
 - **User Authentication** — Signup/signin with JWT tokens and scrypt password hashing (with `timingSafeEqual`)
