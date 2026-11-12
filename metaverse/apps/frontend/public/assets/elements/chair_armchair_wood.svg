@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" shape-rendering="crispEdges">
+  <!-- Floor Shadow -->
+  <ellipse cx="32" cy="54" rx="18" ry="5" fill="rgba(0,0,0,0.3)" shape-rendering="auto"/>
+  <!-- Curved Wooden Chair Legs -->
+  <rect x="15" y="44" width="4" height="11" fill="#78350F" rx="1"/>
+  <rect x="45" y="44" width="4" height="11" fill="#78350F" rx="1"/>
+  <!-- Cozy Turquoise Cushion Base -->
+  <rect x="16" y="32" width="32" height="14" fill="#0284C7" rx="3"/>
+  <rect x="18" y="34" width="28" height="10" fill="#38BDF8" rx="2"/>
+  <!-- Padded Armrests -->
+  <rect x="13" y="26" width="5" height="18" fill="#B45309" rx="2"/>
+  <rect x="46" y="26" width="5" height="18" fill="#B45309" rx="2"/>
+  <!-- Curved Wooden Slatted Backrest -->
+  <rect x="16" y="12" width="32" height="18" fill="#78350F" rx="3"/>
+  <!-- Vertical Wood Slats -->
+  <rect x="20" y="14" width="3" height="14" fill="#B45309"/>
+  <rect x="26" y="14" width="3" height="14" fill="#B45309"/>
+  <rect x="32" y="14" width="3" height="14" fill="#B45309"/>
+  <rect x="38" y="14" width="3" height="14" fill="#B45309"/>
+  <rect x="44" y="14" width="3" height="14" fill="#B45309"/>
+</svg>

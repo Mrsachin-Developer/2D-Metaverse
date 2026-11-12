@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 64" width="128" height="64" shape-rendering="crispEdges">
+  <!-- Floor Shadow -->
+  <rect x="14" y="56" width="100" height="6" fill="rgba(0,0,0,0.3)" rx="3"/>
+  <!-- 3 Folding Screen Panels (Japanese Shoji / Floral Motif) -->
+  <!-- Panel 1 (Left Angled) -->
+  <rect x="16" y="8" width="30" height="49" fill="#78350F" rx="2"/>
+  <rect x="18" y="10" width="26" height="45" fill="#FEF3C7" rx="1"/>
+  <!-- Panel 1 Wood Lattice & Cherry Blossom branch -->
+  <line x1="18" y1="22" x2="44" y2="22" stroke="#B45309" stroke-width="1.5"/>
+  <line x1="18" y1="36" x2="44" y2="36" stroke="#B45309" stroke-width="1.5"/>
+  <circle cx="28" cy="28" r="3" fill="#FDA4AF" shape-rendering="auto"/>
+  <circle cx="34" cy="26" r="2.5" fill="#F43F5E" shape-rendering="auto"/>
+  <circle cx="25" cy="42" r="3" fill="#FDA4AF" shape-rendering="auto"/>
+  <!-- Brass Hinges -->
+  <rect x="45" y="18" width="2" height="4" fill="#D97706"/>
+  <rect x="45" y="42" width="2" height="4" fill="#D97706"/>
+
+  <!-- Panel 2 (Center) -->
+  <rect x="49" y="8" width="30" height="49" fill="#78350F" rx="2"/>
+  <rect x="51" y="10" width="26" height="45" fill="#FEF3C7" rx="1"/>
+  <line x1="51" y1="22" x2="77" y2="22" stroke="#B45309" stroke-width="1.5"/>
+  <line x1="51" y1="36" x2="77" y2="36" stroke="#B45309" stroke-width="1.5"/>
+  <circle cx="62" cy="18" r="3.5" fill="#FDA4AF" shape-rendering="auto"/>
+  <circle cx="68" cy="30" r="3" fill="#F43F5E" shape-rendering="auto"/>
+  <circle cx="58" cy="40" r="2.5" fill="#FDA4AF" shape-rendering="auto"/>
+  <!-- Brass Hinges -->
+  <rect x="78" y="18" width="2" height="4" fill="#D97706"/>
+  <rect x="78" y="42" width="2" height="4" fill="#D97706"/>
+
+  <!-- Panel 3 (Right Angled) -->
+  <rect x="82" y="8" width="30" height="49" fill="#78350F" rx="2"/>
+  <rect x="84" y="10" width="26" height="45" fill="#FEF3C7" rx="1"/>
+  <line x1="84" y1="22" x2="110" y2="22" stroke="#B45309" stroke-width="1.5"/>
+  <line x1="84" y1="36" x2="110" y2="36" stroke="#B45309" stroke-width="1.5"/>
+  <circle cx="94" cy="24" r="3" fill="#FDA4AF" shape-rendering="auto"/>
+  <circle cx="102" cy="28" r="2.5" fill="#F43F5E" shape-rendering="auto"/>
+  <circle cx="97" cy="42" r="3" fill="#FDA4AF" shape-rendering="auto"/>
+</svg>

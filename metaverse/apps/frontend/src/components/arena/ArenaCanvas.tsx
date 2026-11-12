@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import type { Player } from '../../types/websocket';
 import type { SpaceElement } from '../../types/api';
 
-const TILE_SIZE = 48; // Size in pixels of one grid unit
+const TILE_SIZE = 64; // Size in pixels of one grid unit (Gather.town standard scale)
 
 interface ArenaCanvasProps {
   currentUser: Player | null;
@@ -139,20 +139,20 @@ export const ArenaCanvas: React.FC<ArenaCanvasProps> = ({
           const y = ty * TILE_SIZE;
           const isAlt = (tx + ty) % 2 === 0;
 
-          // Base tile color — Minecraft stone-ish
-          ctx.fillStyle = isAlt ? '#3A3A42' : '#323238';
+          // Base tile color — Gather.town modern office floor
+          ctx.fillStyle = isAlt ? '#2C2E37' : '#24262E';
           ctx.fillRect(x, y, TILE_SIZE, TILE_SIZE);
 
           // Subtle pixel grain variation
           if ((tx * 7 + ty * 13) % 5 === 0) {
-            ctx.fillStyle = 'rgba(255,255,255,0.025)';
+            ctx.fillStyle = 'rgba(255,255,255,0.02)';
             ctx.fillRect(x + 2, y + 2, TILE_SIZE - 4, TILE_SIZE - 4);
           }
         }
       }
 
-      // Draw blocky grid lines (Minecraft style)
-      ctx.strokeStyle = '#1E1E22';
+      // Draw subtle grid lines (Gather.town style)
+      ctx.strokeStyle = '#181A22';
       ctx.lineWidth = 1;
       ctx.beginPath();
       for (let x = 0; x <= arenaPixelWidth; x += TILE_SIZE) {
@@ -165,32 +165,32 @@ export const ArenaCanvas: React.FC<ArenaCanvasProps> = ({
       }
       ctx.stroke();
 
-      // Minecraft-style room zone highlight patches (grass/dirt zones)
+      // Room zone highlight patches
       if (spaceWidth >= 16 && spaceHeight >= 16) {
-        // Zone 1 — Grass tint patch (top-left area)
-        ctx.fillStyle = 'rgba(55, 118, 35, 0.12)';
+        // Zone 1 — Soft Green Lounge patch (top-left area)
+        ctx.fillStyle = 'rgba(34, 197, 94, 0.08)';
         ctx.fillRect(TILE_SIZE * 1, TILE_SIZE * 1, TILE_SIZE * 10, TILE_SIZE * 9);
-        ctx.strokeStyle = 'rgba(85, 170, 51, 0.25)';
+        ctx.strokeStyle = 'rgba(34, 197, 94, 0.22)';
         ctx.lineWidth = 2;
         ctx.strokeRect(TILE_SIZE * 1, TILE_SIZE * 1, TILE_SIZE * 10, TILE_SIZE * 9);
 
-        // Zone 2 — Blue tint patch (bottom-right area)
-        ctx.fillStyle = 'rgba(23, 107, 112, 0.1)';
+        // Zone 2 — Soft Cyan Focus patch (bottom-right area)
+        ctx.fillStyle = 'rgba(6, 182, 212, 0.08)';
         ctx.fillRect(TILE_SIZE * 13, TILE_SIZE * 11, TILE_SIZE * 10, TILE_SIZE * 9);
-        ctx.strokeStyle = 'rgba(77, 237, 243, 0.2)';
+        ctx.strokeStyle = 'rgba(6, 182, 212, 0.2)';
         ctx.lineWidth = 2;
         ctx.strokeRect(TILE_SIZE * 13, TILE_SIZE * 11, TILE_SIZE * 10, TILE_SIZE * 9);
       }
 
-      // 4. Draw Minecraft perimeter outer walls (stone-brick border)
+      // 4. Draw Gather-style perimeter outer walls (rich border with beveled frame)
       ctx.save();
-      ctx.strokeStyle = '#585860';
-      ctx.lineWidth = 6;
+      ctx.strokeStyle = '#4F5263';
+      ctx.lineWidth = 8;
       ctx.strokeRect(0, 0, arenaPixelWidth, arenaPixelHeight);
-      // Inner bevel
-      ctx.strokeStyle = '#101014';
+      // Inner subtle line
+      ctx.strokeStyle = '#15161D';
       ctx.lineWidth = 2;
-      ctx.strokeRect(3, 3, arenaPixelWidth - 6, arenaPixelHeight - 6);
+      ctx.strokeRect(4, 4, arenaPixelWidth - 8, arenaPixelHeight - 8);
       ctx.restore();
 
       // 5. Render Placed Map Elements (Desks, Furniture, Objects)
@@ -250,101 +250,110 @@ export const ArenaCanvas: React.FC<ArenaCanvasProps> = ({
 
         const px = Math.round(visual.x);
         const py = Math.round(visual.y);
-        const radius = 17;
+        const spriteSize = 58; // Scaled up to match 64px tile, prominent and readable
+        const radius = 22;
 
         const avatarImg = getImage(player.avatarUrl);
 
         if (avatarImg) {
-          // Standing pixel avatar — Minecraft style shadow (flat square)
-          ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
-          ctx.fillRect(px - 15, py + 14, 30, 6);
+          // Standing pixel avatar — Gather.town soft elliptical shadow
+          ctx.save();
+          ctx.fillStyle = 'rgba(0, 0, 0, 0.35)';
+          ctx.beginPath();
+          ctx.ellipse(px, py + 22, 18, 6, 0, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.restore();
 
           if (isYou) {
             ctx.save();
-            // Minecraft selection highlight — green square glow
-            ctx.strokeStyle = '#55AA33';
-            ctx.lineWidth = 2;
-            ctx.strokeRect(px - 22, py - 22, 44, 44);
+            // Gather.town subtle green active player ring on floor
+            ctx.strokeStyle = '#22C55E';
+            ctx.lineWidth = 2.5;
+            ctx.beginPath();
+            ctx.ellipse(px, py + 22, 22, 8, 0, 0, Math.PI * 2);
+            ctx.stroke();
             ctx.restore();
           }
 
-          const spriteSize = 42;
           ctx.save();
           ctx.imageSmoothingEnabled = false;
           ctx.drawImage(
             avatarImg,
             px - spriteSize / 2,
-            py - spriteSize / 2 - 3,
+            py - spriteSize / 2 - 4,
             spriteSize,
             spriteSize
           );
           ctx.restore();
         } else {
-          // Player shadow — flat square Minecraft style
-          ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
-          ctx.fillRect(px - radius * 0.85, py + radius - 2, radius * 1.7, 6);
+          // Player shadow
+          ctx.save();
+          ctx.fillStyle = 'rgba(0, 0, 0, 0.35)';
+          ctx.beginPath();
+          ctx.ellipse(px, py + 22, radius * 0.9, 6, 0, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.restore();
 
-          // Minecraft selection border for current player
           if (isYou) {
             ctx.save();
-            ctx.strokeStyle = '#55AA33';
-            ctx.lineWidth = 2;
-            ctx.strokeRect(px - radius - 3, py - radius - 3, (radius + 3) * 2, (radius + 3) * 2);
+            ctx.strokeStyle = '#22C55E';
+            ctx.lineWidth = 2.5;
+            ctx.beginPath();
+            ctx.ellipse(px, py + 22, radius + 4, 8, 0, 0, Math.PI * 2);
+            ctx.stroke();
             ctx.restore();
           }
 
-          // Fallback square block with initial letter (Minecraft head style)
+          // Fallback rounded avatar block with initial letter
           ctx.save();
-          ctx.fillStyle = isYou ? '#38761D' : '#176B70';
-          ctx.fillRect(px - radius, py - radius, radius * 2, radius * 2);
-          // Bevel top/left
-          ctx.fillStyle = isYou ? '#5B9E38' : '#2DC1CA';
-          ctx.fillRect(px - radius, py - radius, radius * 2, 3);
-          ctx.fillRect(px - radius, py - radius, 3, radius * 2);
-          // Bevel bottom/right
-          ctx.fillStyle = isYou ? '#183C08' : '#0B3E42';
-          ctx.fillRect(px - radius, py + radius - 3, radius * 2, 3);
-          ctx.fillRect(px + radius - 3, py - radius, 3, radius * 2);
+          ctx.fillStyle = isYou ? '#15803D' : '#0E7490';
+          ctx.beginPath();
+          ctx.roundRect(px - radius, py - radius, radius * 2, radius * 2, 8);
+          ctx.fill();
 
           ctx.fillStyle = '#FFFFFF';
-          ctx.font = 'bold 13px Consolas, monospace';
+          ctx.font = 'bold 15px system-ui, sans-serif';
           ctx.textAlign = 'center';
           ctx.textBaseline = 'middle';
           const label = player.username ? player.username.charAt(0).toUpperCase() : 'U';
-          ctx.fillText(label, px, py + 1);
+          ctx.fillText(label, px, py);
           ctx.restore();
         }
 
-        // Minecraft-style Name Tag (blocky chat bubble, no rounded corners)
+        // Gather.town Style Name Tag (sleek rounded pill with green status indicator)
         const displayName = isYou
           ? `${player.username || 'You'}`
           : player.username || `Explorer ${player.userId.slice(0, 5)}`;
 
-        ctx.font = 'bold 11px Consolas, monospace';
+        ctx.font = '600 12px Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
         const textMetrics = ctx.measureText(displayName);
-        const tagWidth = textMetrics.width + 16;
-        const tagHeight = 16;
+        const tagWidth = textMetrics.width + 26;
+        const tagHeight = 22;
         const tagX = px - tagWidth / 2;
-        const tagY = py - radius - 24;
+        const tagY = py - 42;
 
-        // Minecraft nametag — solid dark background (no rounded corners)
-        ctx.fillStyle = 'rgba(0, 0, 0, 0.75)';
-        ctx.fillRect(tagX - 1, tagY - 1, tagWidth + 2, tagHeight + 2);
-
-        // Nametag border — green for you, cyan for others
-        ctx.strokeStyle = isYou ? '#55AA33' : '#4DEDF3';
+        ctx.save();
+        // Translucent dark rounded pill background
+        ctx.fillStyle = 'rgba(15, 17, 23, 0.88)';
+        ctx.strokeStyle = isYou ? 'rgba(34, 197, 94, 0.6)' : 'rgba(255, 255, 255, 0.12)';
         ctx.lineWidth = 1;
-        ctx.strokeRect(tagX - 1, tagY - 1, tagWidth + 2, tagHeight + 2);
+        ctx.beginPath();
+        ctx.roundRect(tagX, tagY, tagWidth, tagHeight, 11);
+        ctx.fill();
+        ctx.stroke();
 
-        // Green presence dot
-        ctx.fillStyle = '#55FF55';
-        ctx.fillRect(tagX + 4, tagY + tagHeight / 2 - 2, 4, 4);
+        // Green presence indicator dot
+        ctx.fillStyle = '#22C55E';
+        ctx.beginPath();
+        ctx.arc(tagX + 11, tagY + tagHeight / 2, 3.5, 0, Math.PI * 2);
+        ctx.fill();
 
         // Nametag text
-        ctx.fillStyle = '#FFFFFF';
+        ctx.fillStyle = '#F8FAFC';
         ctx.textAlign = 'left';
         ctx.textBaseline = 'middle';
-        ctx.fillText(displayName, tagX + 12, tagY + tagHeight / 2);
+        ctx.fillText(displayName, tagX + 19, tagY + tagHeight / 2);
+        ctx.restore();
 
         // Gather-style Speech Bubble Popup when reacting with Emoji
         const reaction = playerEmojis?.get(player.userId);
@@ -352,21 +361,21 @@ export const ArenaCanvas: React.FC<ArenaCanvasProps> = ({
           const bubbleY = tagY - 26;
           ctx.save();
           ctx.fillStyle = '#FFFFFF';
-          ctx.strokeStyle = '#2E355B';
+          ctx.strokeStyle = '#1E293B';
           ctx.lineWidth = 1.5;
           ctx.beginPath();
-          ctx.roundRect(px - 18, bubbleY - 14, 36, 28, 14);
+          ctx.roundRect(px - 20, bubbleY - 16, 40, 30, 15);
           ctx.fill();
           ctx.stroke();
 
           // Little speech triangle pointer
           ctx.beginPath();
-          ctx.moveTo(px - 4, bubbleY + 14);
-          ctx.lineTo(px + 4, bubbleY + 14);
-          ctx.lineTo(px, bubbleY + 19);
+          ctx.moveTo(px - 5, bubbleY + 14);
+          ctx.lineTo(px + 5, bubbleY + 14);
+          ctx.lineTo(px, bubbleY + 20);
           ctx.fill();
 
-          ctx.font = '16px serif';
+          ctx.font = '18px serif';
           ctx.textAlign = 'center';
           ctx.textBaseline = 'middle';
           ctx.fillText(reaction.emoji, px, bubbleY);

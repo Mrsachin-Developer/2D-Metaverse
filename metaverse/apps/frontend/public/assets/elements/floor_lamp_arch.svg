@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" shape-rendering="crispEdges">
+  <!-- Floor Shadow -->
+  <ellipse cx="32" cy="58" rx="14" ry="4" fill="rgba(0,0,0,0.3)" shape-rendering="auto"/>
+  <!-- Marble Lamp Base -->
+  <rect x="25" y="55" width="14" height="4" fill="#F1F5F9" rx="2"/>
+  <rect x="27" y="54" width="10" height="2" fill="#E2E8F0"/>
+  <!-- Golden Curved Gooseneck Stem -->
+  <path d="M32 54 L32 28 Q32 10 44 14" fill="none" stroke="#D97706" stroke-width="2.5" shape-rendering="auto"/>
+  <!-- Warm Amber Glow -->
+  <ellipse cx="44" cy="24" rx="12" ry="7" fill="rgba(251, 191, 36, 0.25)" shape-rendering="auto"/>
+  <!-- Bell Lampshade -->
+  <path d="M38 20 L50 20 L53 26 L35 26 Z" fill="#F59E0B" rx="1"/>
+  <rect x="36" y="25" width="16" height="2" fill="#FEF3C7"/>
+  <!-- Brass Finial Top -->
+  <circle cx="44" cy="14" r="2" fill="#B45309" shape-rendering="auto"/>
+</svg>
